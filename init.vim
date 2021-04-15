@@ -7,7 +7,7 @@ set number
 set autoindent
 set mouse=a
 set termguicolors
-
+set pastetoggle=<F4>
 
 call plug#begin('~/.config/nvim/plugged') 
 Plug 'joshdick/onedark.vim'
@@ -16,6 +16,8 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'davidhalter/jedi-vim'
+Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'scrooloose/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -28,8 +30,8 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'scrooloose/nerdcommenter'
 Plug 'https://github.com/preservim/tagbar' "Tagbar for code navidation
+Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'prettier/vim-prettier'
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'christoomey/vim-tmux-navigator'
@@ -38,12 +40,16 @@ call plug#end()
 
 colorscheme gruvbox
 
+tnoremap jk <C-\><C-n>   
 inoremap jk <ESC>
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nmap <F8> :TagbarToggle<CR>
+nnoremap <F7> :TerminalSplit bash<CR>
+
+
 
 let g:NERDTreeGitStatusWithFlags = 1
 
@@ -67,6 +73,19 @@ function! SyncTree()
 		wincmd p
 	endif
 endfunction
+
+let g:previous_window = -1
+function SmartInsert()
+	  if &buftype == 'terminal'
+			    if g:previous_window != winnr()
+						  startinsert
+					endif
+					let g:previous_window = winnr()
+		else
+					let g:previous_window = -1
+		endif
+endfunction
+au BufEnter * call SmartInsert()
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
