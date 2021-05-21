@@ -1,13 +1,14 @@
 set relativenumber
 set smarttab
 set cindent
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set number
 set autoindent
 set mouse=a
 set termguicolors
 set pastetoggle=<F4>
+
 
 call plug#begin('~/.config/nvim/plugged') 
 Plug 'joshdick/onedark.vim'
@@ -17,6 +18,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-fugitive' " :Git => to perform git commands
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'scrooloose/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
@@ -24,32 +26,52 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'ryanoasis/vim-devicons'
-Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
-Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'https://github.com/preservim/tagbar' "Tagbar for code navidation
+Plug 'majutsushi/tagbar' "Tagbar for code navidation
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'prettier/vim-prettier'
+Plug 'cakebaker/scss-syntax.vim' " Sass syntax highlight
+Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 call plug#end()
 
-colorscheme gruvbox
+syntax on
+set t_Co=256
+set cursorline
+colorscheme one " one gruvbox onehalf
+let g:airline_theme='onehalfdark'
+" set background ="dark"
+" This line enables the true color support.
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Note, the above line is ignored in Neovim 0.1.5 above, use this line instead.
+set termguicolors
+
 
 tnoremap jk <C-\><C-n>   
 inoremap jk <ESC>
 nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-n> :NERDTree<CR><F5>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nmap <F8> :TagbarToggle<CR>
-nnoremap <F7> :TerminalSplit bash<CR>
-
-
+nnoremap <F6> :TerminalSplit bash<CR>
+nnoremap <F9> :terminal <CR>
+nnoremap <F7> :tabp <CR>
+nnoremap <F8> :tabn <CR>
+nnoremap <F3> :b# <CR>
+nnoremap <F12> :vsplit $MYVIMRC <CR> "Opening init.vim file
+nnoremap <F5> :source $MYVIMRC <CR> " Reloading init.vim file 
+" Tagbar Setting
+nmap <F1> :TagbarToggle<CR>
+" let g:tagbar_ctags_bin="~/.config/nvim/ctags"
+" type \s  and the word with which the all the instance of the current word
+" should be replace
+imap ,t <Esc>:tabnew<CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 let g:NERDTreeGitStatusWithFlags = 1
 
@@ -87,14 +109,14 @@ function SmartInsert()
 endfunction
 au BufEnter * call SmartInsert()
 
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ ]
+" let g:coc_global_extensions = [
+"    'coc-snippets',
+"    'coc-pairs',
+"    'coc-tsserver',
+"    'coc-eslint', 
+"    'coc-prettier', 
+"    'coc-json', 
+"    ]
 
 set hidden
 "set updatetime=300
