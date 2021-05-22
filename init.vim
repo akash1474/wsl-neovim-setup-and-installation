@@ -8,6 +8,8 @@ set autoindent
 set mouse=a
 set termguicolors
 set pastetoggle=<F4>
+set scrolloff=10
+set encoding=UTF-8
 
 
 call plug#begin('~/.config/nvim/plugged') 
@@ -15,14 +17,14 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox' "Theme
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
-
+Plug 'christoomey/vim-tmux-navigator' " Ctrl-l and Ctrl-h left and right in split
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim' " For Python Support
 Plug 'tpope/vim-fugitive' " :Git => to perform git commands
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'scrooloose/nerdtree'
-Plug 'tsony-tsonev/nerdtree-git-plugin'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tsony-tsonev/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'ryanoasis/vim-devicons'
@@ -32,7 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'majutsushi/tagbar' "Tagbar for code navidation
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier' " Prettier file format on save
 Plug 'cakebaker/scss-syntax.vim' " Sass syntax highlight
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
@@ -44,7 +46,7 @@ set t_Co=256
 set cursorline
 colorscheme one " one gruvbox onehalf
 let g:airline_theme='onehalfdark'
-" set background ="dark"
+" set background ="dark" " Uncomment to enter light mode
 " This line enables the true color support.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
