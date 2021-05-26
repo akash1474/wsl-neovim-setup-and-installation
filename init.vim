@@ -1,8 +1,8 @@
 set relativenumber
 set smarttab
 set cindent
-set tabstop=4
-set shiftwidth=2
+set tabstop=6
+set shiftwidth=4
 set number
 set autoindent
 set mouse=a
@@ -16,6 +16,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox' "Theme
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'https://github.com/lifepillar/vim-solarized8.git'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'mhartington/oceanic-next'
 
 Plug 'christoomey/vim-tmux-navigator' " Ctrl-l and Ctrl-h left and right in split
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,18 +43,21 @@ Plug 'cakebaker/scss-syntax.vim' " Sass syntax highlight
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+
 call plug#end()
 
 syntax on
 set t_Co=256
 set cursorline
-colorscheme one " one gruvbox onehalf
-let g:airline_theme='onehalfdark'
-" set background ="dark" " Uncomment to enter light mode
+
+
+colorscheme gruvbox  " OceanicNext palenight ayu one gruvbox onehalf onedark solarized8 _high _low _flat
+let g:airline_theme='gruvbox' " palenight one onehalfdark
+set background =dark  " light/dark
+
+
 " This line enables the true color support.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" Note, the above line is ignored in Neovim 0.1.5 above, use this line instead.
 set termguicolors
 
 
@@ -81,6 +88,10 @@ let g:NERDTreeIgnore = ['^node_modules$']
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Prettier Settings
+let g:prettier#exec_cmd_async = 1
+
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
