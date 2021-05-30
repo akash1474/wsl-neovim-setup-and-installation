@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/mnt/d/Android Development/Projects/task_io/lib'
 let g:netrw_dirhist_3='/mnt/d/Projects/React/daily-info/client'
 let g:netrw_dirhist_2='/mnt/d/Projects/React/daily-info/client/src/components/Life'
 let g:netrw_dirhist_1='/mnt/d/Projects/React/daily-info/client/src/components'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/mnt/d/Projects/React/daily-info/client'
 let g:netrw_dirhist_7='/mnt/d/Projects/React/daily-info'
 let g:netrw_dirhist_6='/mnt/d/Projects/React/daily-info/client'
 let g:netrw_dirhist_5='/mnt/d/Projects/React/daily-info/client/src'
-let g:netrw_dirhist_4='/mnt/d/Projects/React/daily-info/client/src/components'

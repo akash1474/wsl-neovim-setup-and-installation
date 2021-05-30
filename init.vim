@@ -13,15 +13,23 @@ set encoding=UTF-8
 
 
 call plug#begin('~/.config/nvim/plugged') 
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox' "Theme
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'https://github.com/lifepillar/vim-solarized8.git'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'mhartington/oceanic-next'
-Plug 'tomasr/molokai'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' } 
+
+"Theme Plugins
+Plug 'joshdick/onedark.vim' " One Dark
+Plug 'morhetz/gruvbox' " Gruvbox
+Plug 'sonph/onehalf', { 'rtp': 'vim' } " One Half
+Plug 'https://github.com/lifepillar/vim-solarized8.git' " Solarized
+Plug 'drewtempelmeyer/palenight.vim' " Palenight
+Plug 'ayu-theme/ayu-vim' " Ayu
+Plug 'mhartington/oceanic-next' " OceanicNext
+Plug 'tomasr/molokai' " Monokai
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } " Material 
+Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Multiple Color Schemes eg One
+
+
+Plug 'dart-lang/dart-vim-plugin' " dart highlighting
+Plug 'thosakwe/vim-flutter' " flutter support 
+Plug 'iamcco/coc-flutter' " coc Flutter
 
 Plug 'yggdroot/indentline' " Indent Line Vertical 
 Plug 'christoomey/vim-tmux-navigator' " Ctrl-l and Ctrl-h left and right in split
@@ -47,7 +55,6 @@ Plug 'mxw/vim-jsx' " JSX Syntax
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'airblade/vim-gitgutter'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 call plug#end()
 
@@ -61,13 +68,13 @@ syntax on
 set t_Co=256
 set cursorline
 
-colorscheme palenight " material molokai OceanicNext palenight ayu one gruvbox onehalf onedark solarized8 _high _low _flat
-let g:airline_theme='palenight' " palenight one onehalfdark
+colorscheme gruvbox " material molokai OceanicNext palenight ayu one gruvbox onehalf onedark solarized8 _high _low _flat
+let g:airline_theme='gruvbox' " palenight one onehalfdark
 set background =dark  " light/dark
 
 
 
-let g:material_theme_style="ocean"
+" let g:material_theme_style="ocean"
 " let g:molokai_original = 1
 
 " This line enables the true color support.
@@ -106,6 +113,13 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Prettier Settings
 let g:prettier#exec_cmd_async = 1
 
+" Flutter Settings
+" nnoremap <leader>fa :FlutterRun<cr>
+" nnoremap <leader>fq :FlutterQuit<cr>
+" nnoremap <leader>fr :FlutterHotReload<cr>
+" nnoremap <leader>fR :FlutterHotRestart<cr>
+" nnoremap <leader>fD :FlutterVisualDebug<cr>
+
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -136,14 +150,23 @@ function SmartInsert()
 endfunction
 au BufEnter * call SmartInsert()
 
-" let g:coc_global_extensions = [
-"    'coc-snippets',
-"    'coc-pairs',
-"    'coc-tsserver',
-"    'coc-eslint', 
-"    'coc-prettier', 
-"    'coc-json', 
-"    ]
+"coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-flutter',
+  \ 'coc-snippets',
+  \ 'coc-yaml',
+  \ 'coc-tslint-plugin',
+  \ 'coc-tsserver',
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ ]
 
 set hidden
 "set updatetime=300
