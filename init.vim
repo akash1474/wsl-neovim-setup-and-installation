@@ -20,21 +20,20 @@ Plug 'https://github.com/lifepillar/vim-solarized8.git'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'mhartington/oceanic-next'
+Plug 'tomasr/molokai'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } 
 
+Plug 'yggdroot/indentline' " Indent Line Vertical 
 Plug 'christoomey/vim-tmux-navigator' " Ctrl-l and Ctrl-h left and right in split
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'davidhalter/jedi-vim' " For Python Support
 Plug 'tpope/vim-fugitive' " :Git => to perform git commands
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
-Plug 'scrooloose/nerdtree'
-" Plug 'tsony-tsonev/nerdtree-git-plugin'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'scrooloose/nerdtree' " NERDTree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NERDTree
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-Plug 'ryanoasis/vim-devicons'
-Plug 'https://github.com/ap/vim-css-color'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons' " File Icons
+Plug 'https://github.com/ap/vim-css-color' " CSS Highlight
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'majutsushi/tagbar' "Tagbar for code navidation
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -43,18 +42,33 @@ Plug 'cakebaker/scss-syntax.vim' " Sass syntax highlight
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'mxw/vim-jsx' " JSX Syntax
+" Plug 'junegunn/fzf' " File Finder
+" Plug 'tsony-tsonev/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'airblade/vim-gitgutter'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 
 call plug#end()
+
+" Indent Line Config
+" let g:indentLine_char = '¦'
+" let g:indentLine_color_gui = '#ffffff'
+" let g:indentLine_bgcolor_gui = '#FF5F00'
+
 
 syntax on
 set t_Co=256
 set cursorline
 
-
-colorscheme gruvbox  " OceanicNext palenight ayu one gruvbox onehalf onedark solarized8 _high _low _flat
-let g:airline_theme='gruvbox' " palenight one onehalfdark
+colorscheme palenight " material molokai OceanicNext palenight ayu one gruvbox onehalf onedark solarized8 _high _low _flat
+let g:airline_theme='palenight' " palenight one onehalfdark
 set background =dark  " light/dark
 
+
+
+let g:material_theme_style="ocean"
+" let g:molokai_original = 1
 
 " This line enables the true color support.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
